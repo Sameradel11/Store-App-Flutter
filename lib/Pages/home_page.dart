@@ -3,7 +3,7 @@ import 'package:store/helper/consts.dart';
 import 'package:store/models/product_model.dart';
 import 'package:store/services/get_all_products.dart';
 
-import '../helper/product_container.dart';
+import '../widgets/product_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

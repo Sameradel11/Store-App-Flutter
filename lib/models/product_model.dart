@@ -2,14 +2,16 @@
 import 'package:store/models/rating_model.dart';
 
 class ProductModel {
-  double price;
+  String price;
   String title;
   String category;
   String description;
   Rating? rating;
   String image;
+  int id;
   ProductModel(
-      {required this.price,
+      {required this.id,
+      required this.price,
       required this.title,
       required this.category,
       required this.description,
@@ -17,11 +19,22 @@ class ProductModel {
       required this.image});
   factory ProductModel.fromjson(data) {
     return ProductModel(
-        price: double.parse(data["price"].toString()),
+        id: data["id"],
+        price: data["price"].toString(),
         title: data['title'],
         category: data["category"],
         description: data["description"],
         image: data["image"],
         rating: Rating.fromjson(data["rating"]));
+  }
+  factory ProductModel.fromjsonII(data) {
+    return ProductModel(
+      id: data["id"],
+      price: data["price"],
+      title: data['title'],
+      category: data["category"],
+      description: data["description"],
+      image: data["image"],
+    );
   }
 }

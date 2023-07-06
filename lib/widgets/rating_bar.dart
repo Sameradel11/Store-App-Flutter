@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class RatingBarI extends StatelessWidget {
   RatingBarI({super.key, this.rate});
   double? rate;
@@ -16,24 +15,26 @@ class RatingBarI extends StatelessWidget {
           color: Colors.amber[700],
           size: 30,
         ));
-      } else if (realnumber + 1 == i) {
-        starlist.add(Stack(
-          children: [
-            Icon(
-              Icons.star,
-              color: Colors.amber[700],
-              size: 30,
-            ),
-            ClipRect(
-                clipper: Clipper(fraction: fraction),
-                child: const Icon(
-                  Icons.star,
-                  color: Colors.grey,
-                  size: 30,
-                ))
-          ],
-        ));
-      } else {
+      }
+      // else if (realnumber + 1 == i) {
+      //   starlist.add(Stack(
+      //     children: [
+      //       Icon(
+      //         Icons.star,
+      //         color: Colors.amber[700],
+      //         size: 30,
+      //       ),
+      //       ClipRect(
+      //           clipper: Clipper(fraction: fraction),
+      //           child: const Icon(
+      //             Icons.star,
+      //             color: Colors.grey,
+      //             size: 30,
+      //           ))
+      //     ],
+      //   ));
+      // }
+      else {
         starlist.add(const Icon(
           Icons.star,
           color: Colors.grey,

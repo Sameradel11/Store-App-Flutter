@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../models/product_model.dart';
+
 class Api {
   Future<dynamic> getservice({required String link, String? token}) async {
     Map<String, String> headers = {};
@@ -16,9 +18,7 @@ class Api {
     }
   }
 
-
-
-  Future<http.Response> postService(
+  Future<Map<String, dynamic>> postService(
       {required link,
       required Map<String, dynamic> body,
       String? token}) async {
@@ -27,19 +27,39 @@ class Api {
       "Accept": "Application/json",
       "Content-type": "application/x-www-form-urlencoded"
     });
-    return response;
+     print(body);
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      print(data);
+
+      return data;
+    } else {
+      throw (Exception(
+          "dumbass${response.statusCode} | ${jsonDecode(response.body)}"));
+    }
   }
 
-
-
-  Future<http.Response> putservice(
-      {required link,
+  Future<Map<String, dynamic>> putservice(
+    
+      {required id,
+        required link,
       required Map<String, dynamic> body,
       String? token}) async {
     Map<String, String> headers = {};
+
     headers.addAll({"Content-Type": "application/x-www-form-urlencoded"});
+    print(body);
     http.Response response =
-        await http.post(Uri.parse(link), body: body, headers: headers);
-    return response;
+        await http.put(Uri.parse(link), body: body, headers: headers);
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      print(data);
+      return data;
+    } else {
+      throw (Exception(
+          "dumbass${response.statusCode} |"));
+    }
   }
 }

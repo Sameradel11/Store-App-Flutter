@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:store/Pages/update_page.dart';
 import 'package:store/helper/consts.dart';
-import 'package:store/helper/rating_bar.dart';
 import 'package:store/models/product_model.dart';
+
+import '../widgets/rating_bar.dart';
 
 class ProductDetails extends StatelessWidget {
   static String id = "upp";
@@ -14,7 +16,13 @@ class ProductDetails extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         elevation: 15,
         backgroundColor: Kprimary_color,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return UpdateProductPage(
+              productdetails: productModel,
+            );
+          }));
+        },
         foregroundColor: Colors.white,
         child: const Icon(Icons.edit),
       ),

@@ -8,7 +8,7 @@ class ProductCard extends StatelessWidget {
   ProductModel product;
   @override
   Widget build(BuildContext context) {
-    return Stack(clipBehavior: Clip.none, children: [
+    return Stack(children: [
       Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
@@ -56,13 +56,13 @@ class ProductCard extends StatelessWidget {
         ),
       ),
       Positioned(
-        bottom: 78,
+        bottom: 60,
         right: 10,
         left: 75,
         child: Image.network(
           product.image,
           width: 100,
-          height: 100,
+          height: 90,
         ),
       ),
     ]);
